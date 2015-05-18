@@ -1,0 +1,31 @@
+{
+  "name": "generator-spring-microservice",
+  "version": "1.0.1",
+  "description": "Spring boot microservices with Netflix components",
+  "keywords": [
+    "yeoman-generator",
+    "Java",
+    "Spring",
+    "Microservice",
+    "Netflix"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NationalLibraryOfNorway/generator-spring-microservice"
+  },
+  "author": "Andreas Bjørnådal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NationalLibraryOfNorway/generator-spring-microservice/issues"
+  },
+  "homepage": "https://github.com/NationalLibraryOfNorway/generator-spring-microservice",
+  "dependencies": {
+    "yeoman-generator": "0.x.x",
+    "chalk": "1.x.x",
+    "underscore.string": "2.x.x"
+  }
+}

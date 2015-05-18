@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: <%= baseName %>
+#  cloud:
+#    config:
+#      uri: ${SPRING_CONFIG_URI:http://localhost:8888}
+#      failFast: false
+#  oauth2:
+#    resource:
+#      userInfoUri: http://localhost:9999/uaa/user
+#      jwt:
+#        keyUri: http://localhost:9999/uaa/oauth/token_key

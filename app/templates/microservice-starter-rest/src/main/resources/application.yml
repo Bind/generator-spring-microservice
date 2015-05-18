@@ -1,0 +1,14 @@
+info:
+  app:
+    name: <%= baseName %>
+    description: Service description
+
+server:
+  port: 8080
+
+endpoints:
+  restart:
+    enabled: true
+  refresh:
+    enabled: true
+
