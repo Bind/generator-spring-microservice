@@ -36,26 +36,121 @@ SpringGenerator.prototype.askFor = function askFor() {
         '..........+88888888888888888888888+..........\n' +
         '...........,888888888888888888888:...........\n' +
         '.............DD888888888888888DD.............\n' +
-        chalk.red('\nWelcome to the Spring Boot Microservice Generator\n\n')));
+        chalk.blue('\nWelcome to the Spring Boot Microservice Generator\n\n')));
 
     var prompts = [
         {
             type: 'string',
             name: 'packageName',
-            message: '(1/3) What is your default package name?',
-            default: 'com.myapp'
+            message: '(1/10) What is your default package name?',
+            default: 'com.example.myservice'
         },
         {
             type: 'string',
             name: 'baseName',
-            message: '(2/3) What is the base name of app?',
-            default: 'app'
+            message: '(2/10) What is the base name of service?',
+            default: 'myservice'
+        },
+        {
+            type: 'string',
+            name: 'serviceDescription',
+            message: '(3/10) Give a short description of service.',
+            default: 'My Microservice'
         },
         {
             type: 'string',
             name: 'dockerPrefix',
-            message: '(3/3) What is your Docker prefix?',
+            message: '(4/10) What is your Docker prefix?',
             default: 'example'
+        },
+        {
+            type: 'confirm',
+            name: 'useSonar',
+            message: '(5/10) Do you want to use SonarQube?',
+            default: false
+        }       ,
+        {
+            type: 'confirm',
+            name: 'useScmAndDm',
+            message: '(6/10) Do you want to use SCM and Distribution Management?',
+            default: false
+        },
+        {
+            type: 'list',
+            name: 'databaseType',
+            message: '(7/10) Which *type* of database would you like to use?',
+            choices: [
+                {
+                    value: 'none',
+                    name: 'None'
+                },
+                {
+                    value: 'sql',
+                    name: 'SQL (H2, MySQL, PostgreSQL)'
+                },
+                {
+                    value: 'mongodb',
+                    name: 'MongoDB'
+                }
+            ],
+            default: 'none'
+        },
+        {
+            when: function (response) {
+                return response.databaseType == 'sql';
+            },
+            type: 'list',
+            name: 'prodDatabaseType',
+            message: '(8/10) Which *production* database would you like to use?',
+            choices: [
+                {
+                    value: 'mysql',
+                    name: 'MySQL'
+                },
+                {
+                    value: 'postgresql',
+                    name: 'PostgreSQL'
+                }
+            ],
+            default: 0
+        },
+        {
+            when: function (response) {
+                return (response.databaseType == 'sql' && response.prodDatabaseType == 'mysql');
+            },
+            type: 'list',
+            name: 'devDatabaseType',
+            message: '(9/10) Which *development* database would you like to use?',
+            choices: [
+                {
+                    value: 'h2Memory',
+                    name: 'H2 in-memory with Web console'
+                },
+                {
+                    value: 'mysql',
+                    name: 'MySQL'
+                }
+            ],
+            default: 0
+        },
+        {
+            when: function (response) {
+                return (response.databaseType == 'sql' && response.prodDatabaseType == 'postgresql');
+            },
+            type: 'list',
+            name: 'devDatabaseType',
+            message: '(10/10) Which *development* database would you like to use?',
+            choices: [
+                {
+                    value: 'h2Memory',
+                    name: 'H2 in-memory with Web console'
+                },
+                {
+                    value: 'postgresql',
+                    name: 'PostgreSQL'
+                }
+            ],
+            default: 0
         }
     ];
 
@@ -64,6 +159,12 @@ SpringGenerator.prototype.askFor = function askFor() {
         this.baseName = props.baseName;
         this.starters = props.starters;
         this.dockerPrefix = props.dockerPrefix;
+        this.useSonar = props.useSonar;
+        this.useScmAndDm = props.useScmAndDm;
+        this.serviceDescription = props.serviceDescription;
+        this.databaseType = props.databaseType;
+        this.devDatabaseType = props.devDatabaseType;
+        this.prodDatabaseType = props.prodDatabaseType;
 
         cb();
     }.bind(this));
@@ -91,7 +192,9 @@ SpringGenerator.prototype.app = function app() {
 
     // Resource
     this.mkdir(resourceDir);
-    this.template(resourceDirTemplate + 'application.yml', resourceDir  + 'application.yml', this, {});
+    this.template(resourceDirTemplate + 'application.yml', resourceDir  + 'application.yml', this, { 'interpolate': /<%=([\s\S]+?)%>/g });
+    this.template(resourceDirTemplate + 'application-dev.yml', resourceDir  + 'application-dev.yml', this, { 'interpolate': /<%=([\s\S]+?)%>/g });
+    this.template(resourceDirTemplate + 'application-prod.yml', resourceDir  + 'application-prod.yml', this, { 'interpolate': /<%=([\s\S]+?)%>/g });
     this.template(resourceDirTemplate + 'bootstrap.yml', resourceDir  + 'bootstrap.yml', this, { 'interpolate': /<%=([\s\S]+?)%>/g });
 
     // Test

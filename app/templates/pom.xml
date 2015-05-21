@@ -18,5 +18,24 @@
         <module><%= baseName %>-rest</module>
     </modules>
 
+    <% if (useScmAndDm) { %>
+    <scm>
+        <url>https://github.com/example-org/example-rep.git</url>
+        <connection>scm:git:git://github.com/example-org/example-rep.git</connection>
+        <developerConnection>scm:git:git@github.com:example-org/example-rep.git</developerConnection>
+    </scm>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>Snapshot Repository</name>
+            <url>http://example.com:8091/artifactory/libs-snapshots-local</url>
+        </snapshotRepository>
+        <repository>
+            <id>releases</id>
+            <name>Release Repository</name>
+            <url>http://example.com:8091/artifactory/libs-releases-local</url>
+        </repository>
+    </distributionManagement><% } %>
+
 
 </project>

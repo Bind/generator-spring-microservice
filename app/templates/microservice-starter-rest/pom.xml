@@ -8,7 +8,7 @@
     <packaging>jar</packaging>
 
     <name><%= baseName %>-rest</name>
-    <description>My microservice</description>
+    <description><%= serviceDescription %></description>
 
     <parent>
         <groupId><%= packageName %></groupId>
@@ -20,7 +20,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <start-class><%= packageName %>.Application</start-class>
         <java.version>1.8</java.version>
-        <docker.image.prefix><%= dockerPrefix %></docker.image.prefix>
+        <docker.image.prefix><%= dockerPrefix %></docker.image.prefix><% if (useSonar) { %>
+        <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+        <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+        <sonar.jacoco.itReportPath>${project.basedir}/target/jacoco-it.exec</sonar.jacoco.itReportPath>
+        <sonar.language>java</sonar.language><% } %>
     </properties>
 
     <dependencyManagement>
@@ -39,7 +43,15 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-hateoas</artifactId>
-        </dependency>
+        </dependency><% if (databaseType == 'mongodb') { %>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency><% } %> <% if (databaseType == 'sql') { %>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency><% } %>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -80,7 +92,21 @@
             <groupId>com.wordnik</groupId>
             <artifactId>swagger-annotations</artifactId>
             <version>1.5.3-M1</version>
-        </dependency>
+        </dependency><% if (devDatabaseType == 'mysql' || prodDatabaseType == 'mysql') { %>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency><% } %> <% if (devDatabaseType == 'postgresql' || prodDatabaseType == 'postgresql') { %>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+        </dependency><% } %> <% if (devDatabaseType == 'h2Memory' || prodDatabaseType == 'h2Memory') { %>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId><% if (devDatabaseType != 'h2Memory') { %>
+            <scope>test</scope><% } %>
+        </dependency> <% } %>
 
         <!-- Testing -->
         <dependency>
@@ -101,7 +127,12 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
+            </plugin><% if (useSonar) { %>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>2.5</version>
+            </plugin><% } %>
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>

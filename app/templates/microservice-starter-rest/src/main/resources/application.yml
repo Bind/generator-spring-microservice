@@ -1,10 +1,7 @@
 info:
   app:
     name: <%= baseName %>
-    description: Service description
-
-server:
-  port: 8080
+    description: <%= serviceDescription %>
 
 endpoints:
   restart:
@@ -12,3 +9,5 @@ endpoints:
   refresh:
     enabled: true
 
+server:
+  port: 8080
