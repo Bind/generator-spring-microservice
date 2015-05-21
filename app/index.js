@@ -241,12 +241,13 @@ SpringGenerator.prototype.app = function app() {
 
     // Java
     this.mkdir(modelJavaDir);
+    this.template(modelJavaDirTemplate + 'package-info.java', modelJavaDir + 'package-info.java', this, {});
 
     // Resource
     this.mkdir(modelResourceDir);
 
     // Test
-    this.mkdir(modelTestDir);
+    //this.mkdir(modelTestDir);
 
     // Project
     this.template(modelDirTemplate + 'pom.xml', modelDir + 'pom.xml', this, {});
