@@ -1,4 +1,4 @@
-package <%= packageName %>.rest;
+package <%= packageName %>.rest.controller;
 
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Api(value = "/", description = "Home api")
-public class HomeResource {
+public class HomeController {
 
     @ApiOperation(value = "Hello World", notes = "Hello World notes", response = String.class)
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Successful response") })

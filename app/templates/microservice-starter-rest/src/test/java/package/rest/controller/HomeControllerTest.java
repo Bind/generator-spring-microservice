@@ -1,4 +1,4 @@
-package <%= packageName %>.rest;
+package <%= packageName %>.rest.controller;
 
 import <%= packageName %>.Application;
 import org.junit.Before;
@@ -18,14 +18,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
-public class HomeResourceTest {
+public class HomeControllerTest {
 
     private MockMvc mockMvc;
 
     @Before
     public void setup() {
-        HomeResource homeResource = new HomeResource();
-        mockMvc = MockMvcBuilders.standaloneSetup(homeResource).build();
+        HomeController homeController = new HomeController();
+        mockMvc = MockMvcBuilders.standaloneSetup(homeController).build();
     }
 
     @Test

@@ -202,7 +202,7 @@ SpringGenerator.prototype.app = function app() {
     this.mkdir(testDir + "/rest");
     this.mkdir(testDir + "/config");
     this.template(testDirTemplate + 'ApplicationTests.java', testDir + 'ApplicationTests.java', this, {});
-    this.template(testDirTemplate + 'rest/HomeResourceTest.java', testDir + 'rest/HomeResourceTest.java', this, {});
+    this.template(testDirTemplate + 'rest/controller/HomeControllerTest.java', testDir + 'rest/controller/HomeControllerTest.java', this, {});
 
 
     // Java
@@ -211,6 +211,8 @@ SpringGenerator.prototype.app = function app() {
     this.mkdir(javaDir + '/domain');
     this.mkdir(javaDir + '/repository');
     this.mkdir(javaDir + '/rest');
+    this.mkdir(javaDir + '/rest/assembler');
+    this.mkdir(javaDir + '/rest/controller');
     this.mkdir(javaDir + '/security');
     this.mkdir(javaDir + '/service');
     this.template(javaDirTemplate + 'Application.java', javaDir + 'Application.java', this, {});
@@ -218,7 +220,8 @@ SpringGenerator.prototype.app = function app() {
     this.template(javaDirTemplate + 'config/SecurityConfig.java', javaDir + 'config/SecurityConfig.java', this, {});
     this.template(javaDirTemplate + 'domain/package-info.java', javaDir + 'domain/package-info.java', this, {});
     this.template(javaDirTemplate + 'repository/package-info.java', javaDir + 'repository/package-info.java', this, {});
-    this.template(javaDirTemplate + 'rest/HomeResource.java', javaDir + 'rest/HomeResource.java', this, {});
+    this.template(javaDirTemplate + 'rest/controller/HomeController.java', javaDir + 'rest/controller/HomeController.java', this, {});
+    this.template(javaDirTemplate + 'rest/assembler/package-info.java', javaDir + 'rest/assembler/package-info.java', this, {});
     this.template(javaDirTemplate + 'security/CustomPermissionEvaluator.java', javaDir + 'security/CustomPermissionEvaluator.java', this, {});
     this.template(javaDirTemplate + 'service/package-info.java', javaDir + 'service/package-info.java', this, {});
 
