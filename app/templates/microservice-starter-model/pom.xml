@@ -10,4 +10,11 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <artifactId><%= baseName %>-model</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-hateoas</artifactId>
+        </dependency>
+    </dependencies>
 </project>

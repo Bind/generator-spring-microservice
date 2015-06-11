@@ -15,3 +15,10 @@ spring: <% if (databaseType == 'mongodb') { %>
     prepStmtCacheSize: 250
     prepStmtCacheSqlLimit: 2048
     useServerPrepStmts: true<% } %><% } %>
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

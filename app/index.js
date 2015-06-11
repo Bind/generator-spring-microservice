@@ -253,12 +253,12 @@ SpringGenerator.prototype.app = function app() {
     //this.mkdir(modelTestDir);
 
     // Project
-    this.template(modelDirTemplate + 'pom.xml', modelDir + 'pom.xml', this, {});
+    this.template(modelDirTemplate + 'pom.xml', modelDir + 'pom.xml', this, { 'interpolate': /<%=([\s\S]+?)%>/g });
 
     // ----------------------------
     // Micro service starter MAIN
     // ----------------------------
-    this.template('pom.xml', 'pom.xml', this, {});
+    this.template('pom.xml', 'pom.xml', this, { 'interpolate': /<%=([\s\S]+?)%>/g });
     this.template('.gitignore', '.gitignore', this, {});
 
     this.config.set('packageName', this.packageName);
