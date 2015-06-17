@@ -44,7 +44,19 @@
             <name>Release Repository</name>
             <url>http://example.com:8091/artifactory/libs-releases-local</url>
         </repository>
-    </distributionManagement><% } %>
+    </distributionManagement>
+
+    <repositories>
+        <repository>
+            <releases />
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>releases</id>
+            <name>Release versions</name>
+            <url>http://example.com:8091/artifactory/libs-releases-local</url>
+        </repository>
+    </repositories><% } %>
 
     <build>
         <plugins>
