@@ -259,7 +259,7 @@ SpringGenerator.prototype.app = function app() {
     // Micro service starter MAIN
     // ----------------------------
     this.template('pom.xml', 'pom.xml', this, { 'interpolate': /<%=([\s\S]+?)%>/g });
-    this.template('.gitignore', '.gitignore', this, {});
+    this.template('.npmignore', '.gitignore', this, {});
 
     this.config.set('packageName', this.packageName);
     this.config.set('packageFolder', packageFolder);
