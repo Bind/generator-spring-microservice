@@ -1,1 +1,1 @@
-package <%= packageName %>;
+package <%= packageName %>.model;

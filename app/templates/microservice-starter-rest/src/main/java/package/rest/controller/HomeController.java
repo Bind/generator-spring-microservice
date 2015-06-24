@@ -25,7 +25,7 @@ import java.util.concurrent.ExecutionException;
 @Api(value = "/", description = "Home api")
 public class HomeController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(HomeController.class);
+    private static final Logger LOG = LoggerFactory.getLogger(HomeController.class);
 
     @ApiOperation(value = "Hello World", notes = "Hello World notes", response = String.class)
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Successful response") })
@@ -45,7 +45,7 @@ public class HomeController {
             headers.append(headerKey + ": " + headerValue + ", ");
         }
 
-        LOGGER.error("" +
+        LOG.error("" +
                 "Got an unexcepted exception.\n" +
                 "Context Path: " + req.getContextPath() + "\n" +
                 "Request URI: " + req.getRequestURI() + "\n" +

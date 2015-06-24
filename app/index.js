@@ -193,8 +193,8 @@ SpringGenerator.prototype.app = function app() {
     // Resource
     this.mkdir(resourceDir);
     this.template(resourceDirTemplate + 'application.yml', resourceDir  + 'application.yml', this, { 'interpolate': /<%=([\s\S]+?)%>/g });
-    this.template(resourceDirTemplate + 'application-dev.yml', resourceDir  + 'application-dev.yml', this, { 'interpolate': /<%=([\s\S]+?)%>/g });
-    this.template(resourceDirTemplate + 'application-prod.yml', resourceDir  + 'application-prod.yml', this, { 'interpolate': /<%=([\s\S]+?)%>/g });
+    //this.template(resourceDirTemplate + 'application-dev.yml', resourceDir  + 'application-dev.yml', this, { 'interpolate': /<%=([\s\S]+?)%>/g });
+    //this.template(resourceDirTemplate + 'application-prod.yml', resourceDir  + 'application-prod.yml', this, { 'interpolate': /<%=([\s\S]+?)%>/g });
     this.template(resourceDirTemplate + 'bootstrap.yml', resourceDir  + 'bootstrap.yml', this, { 'interpolate': /<%=([\s\S]+?)%>/g });
 
     // Test
@@ -234,11 +234,11 @@ SpringGenerator.prototype.app = function app() {
     // ----------------------------
     var modelDir = this.baseName + '-model/';
     var modelDirTemplate = 'microservice-starter-model/';
-    var modelJavaDir = modelDir + 'src/main/java/' + packageFolder + '/';
+    var modelJavaDir = modelDir + 'src/main/java/' + packageFolder + '/model/';
     var modelJavaDirTemplate = modelDirTemplate + 'src/main/java/package/';
     var modelResourceDir = modelDir + 'src/main/resources/';
     var modelResourceDirTemplate = modelDirTemplate + 'src/main/resources/';
-    var modelTestDir = modelDir + 'src/test/java/' + packageFolder + '/';
+    var modelTestDir = modelDir + 'src/test/java/' + packageFolder + '/model/';
     var modelTestDirTemplate = modelDirTemplate + 'src/test/java/package/';
 
 
