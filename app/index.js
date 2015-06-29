@@ -213,6 +213,7 @@ SpringGenerator.prototype.app = function app() {
     this.mkdir(javaDir + '/rest');
     this.mkdir(javaDir + '/rest/assembler');
     this.mkdir(javaDir + '/rest/controller');
+    this.mkdir(javaDir + '/rest/global');
     this.mkdir(javaDir + '/security');
     this.mkdir(javaDir + '/service');
     this.template(javaDirTemplate + 'Application.java', javaDir + 'Application.java', this, {});
@@ -222,6 +223,7 @@ SpringGenerator.prototype.app = function app() {
     this.template(javaDirTemplate + 'repository/package-info.java', javaDir + 'repository/package-info.java', this, {});
     this.template(javaDirTemplate + 'rest/controller/HomeController.java', javaDir + 'rest/controller/HomeController.java', this, {});
     this.template(javaDirTemplate + 'rest/assembler/package-info.java', javaDir + 'rest/assembler/package-info.java', this, {});
+    this.template(javaDirTemplate + 'rest/global/GlobalExceptionHandler.java', javaDir + 'rest/global/GlobalExceptionHandler.java', this, {});
     this.template(javaDirTemplate + 'security/CustomPermissionEvaluator.java', javaDir + 'security/CustomPermissionEvaluator.java', this, {});
     this.template(javaDirTemplate + 'service/package-info.java', javaDir + 'service/package-info.java', this, {});
 
