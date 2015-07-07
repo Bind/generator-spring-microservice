@@ -8,7 +8,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.2.4.RELEASE</version>
+        <version>1.2.5.RELEASE</version>
         <relativePath/>
         <!-- lookup parent from repository -->
     </parent>
@@ -24,6 +24,7 @@
     <modules>
         <module><%= baseName %>-model</module>
         <module><%= baseName %>-rest</module>
+        <module><%= baseName %>-it</module>
     </modules>
     <% if (useScmAndDm) { %>
     <scm>

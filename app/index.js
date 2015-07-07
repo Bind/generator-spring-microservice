@@ -201,7 +201,7 @@ SpringGenerator.prototype.app = function app() {
     this.mkdir(testDir);
     this.mkdir(testDir + "/rest");
     this.mkdir(testDir + "/config");
-    this.template(testDirTemplate + 'ApplicationTests.java', testDir + 'ApplicationTests.java', this, {});
+    //this.template(testDirTemplate + 'ApplicationTests.java', testDir + 'ApplicationTests.java', this, {});
     this.template(testDirTemplate + 'rest/controller/HomeControllerTest.java', testDir + 'rest/controller/HomeControllerTest.java', this, {});
 
 
@@ -256,6 +256,29 @@ SpringGenerator.prototype.app = function app() {
 
     // Project
     this.template(modelDirTemplate + 'pom.xml', modelDir + 'pom.xml', this, { 'interpolate': /<%=([\s\S]+?)%>/g });
+
+    // ----------------------------
+    // Micro service starter IT
+    // ----------------------------
+    var itDir = this.baseName + '-it/';
+    var itDirTemplate = 'microservice-starter-it/';
+    var itResourceDir = itDir + 'src/test/resources/';
+    var itResourceDirTemplate = itDirTemplate + 'src/test/resources/';
+    var itTestDir = itDir + 'src/test/java/' + packageFolder + '/it/';
+    var itTestDirTemplate = itDirTemplate + 'src/test/java/package/';
+
+    // Test Resource
+    this.mkdir(itResourceDir);
+
+    // Test
+    this.mkdir(itTestDir);
+    this.mkdir(itTestDir + "/config");
+
+    // Java
+    this.template(itTestDirTemplate + 'IntegrationTest.java', itTestDir + 'IntegrationTest.java', this, {});
+
+    // Project
+    this.template(itDirTemplate + 'pom.xml', itDir + 'pom.xml', this, { 'interpolate': /<%=([\s\S]+?)%>/g });
 
     // ----------------------------
     // Micro service starter MAIN
