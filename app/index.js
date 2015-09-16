@@ -187,45 +187,28 @@ SpringGenerator.prototype.app = function app() {
     var testDirTemplate = restDirTemplate + 'src/test/java/package/';
 
     // Docker
-    this.mkdir(dockerDir);
     this.template(dockerDirTemplate + 'Dockerfile', dockerDir  + 'Dockerfile', this, {});
 
     // Resource
-    this.mkdir(resourceDir);
     this.template(resourceDirTemplate + 'application.yml', resourceDir  + 'application.yml', this, { 'interpolate': /<%=([\s\S]+?)%>/g });
     //this.template(resourceDirTemplate + 'application-dev.yml', resourceDir  + 'application-dev.yml', this, { 'interpolate': /<%=([\s\S]+?)%>/g });
     //this.template(resourceDirTemplate + 'application-prod.yml', resourceDir  + 'application-prod.yml', this, { 'interpolate': /<%=([\s\S]+?)%>/g });
     this.template(resourceDirTemplate + 'bootstrap.yml', resourceDir  + 'bootstrap.yml', this, { 'interpolate': /<%=([\s\S]+?)%>/g });
 
     // Test
-    this.mkdir(testDir);
-    this.mkdir(testDir + "/rest");
-    this.mkdir(testDir + "/config");
     //this.template(testDirTemplate + 'ApplicationTests.java', testDir + 'ApplicationTests.java', this, {});
     this.template(testDirTemplate + 'rest/controller/HomeControllerTest.java', testDir + 'rest/controller/HomeControllerTest.java', this, {});
 
 
     // Java
-    this.mkdir(javaDir);
-    this.mkdir(javaDir + '/config');
-    this.mkdir(javaDir + '/domain');
-    this.mkdir(javaDir + '/repository');
-    this.mkdir(javaDir + '/rest');
-    this.mkdir(javaDir + '/rest/assembler');
-    this.mkdir(javaDir + '/rest/controller');
-    this.mkdir(javaDir + '/rest/global');
-    this.mkdir(javaDir + '/security');
-    this.mkdir(javaDir + '/service');
     this.template(javaDirTemplate + 'Application.java', javaDir + 'Application.java', this, {});
     this.template(javaDirTemplate + 'config/ApplicationSettings.java', javaDir + 'config/ApplicationSettings.java', this, {});
     this.template(javaDirTemplate + 'config/SecurityConfig.java', javaDir + 'config/SecurityConfig.java', this, {});
-    this.template(javaDirTemplate + 'domain/package-info.java', javaDir + 'domain/package-info.java', this, {});
-    this.template(javaDirTemplate + 'repository/package-info.java', javaDir + 'repository/package-info.java', this, {});
+    this.template(javaDirTemplate + 'config/CustomPermissionEvaluator.java', javaDir + 'config/CustomPermissionEvaluator.java', this, {});
     this.template(javaDirTemplate + 'rest/controller/HomeController.java', javaDir + 'rest/controller/HomeController.java', this, {});
     this.template(javaDirTemplate + 'rest/assembler/package-info.java', javaDir + 'rest/assembler/package-info.java', this, {});
     this.template(javaDirTemplate + 'rest/global/GlobalExceptionHandler.java', javaDir + 'rest/global/GlobalExceptionHandler.java', this, {});
-    this.template(javaDirTemplate + 'security/CustomPermissionEvaluator.java', javaDir + 'security/CustomPermissionEvaluator.java', this, {});
-    this.template(javaDirTemplate + 'service/package-info.java', javaDir + 'service/package-info.java', this, {});
+    this.template(javaDirTemplate + 'core/package-info.java', javaDir + 'core/package-info.java', this, {});
 
 
     // Project
@@ -245,14 +228,7 @@ SpringGenerator.prototype.app = function app() {
 
 
     // Java
-    this.mkdir(modelJavaDir);
     this.template(modelJavaDirTemplate + 'package-info.java', modelJavaDir + 'package-info.java', this, {});
-
-    // Resource
-    this.mkdir(modelResourceDir);
-
-    // Test
-    //this.mkdir(modelTestDir);
 
     // Project
     this.template(modelDirTemplate + 'pom.xml', modelDir + 'pom.xml', this, { 'interpolate': /<%=([\s\S]+?)%>/g });
@@ -267,15 +243,8 @@ SpringGenerator.prototype.app = function app() {
     var itTestDir = itDir + 'src/test/java/' + packageFolder + '/it/';
     var itTestDirTemplate = itDirTemplate + 'src/test/java/package/';
 
-    // Test Resource
-    this.mkdir(itResourceDir);
-
-    // Test
-    this.mkdir(itTestDir);
-    this.mkdir(itTestDir + "/config");
-
     // Java
-    this.template(itTestDirTemplate + 'IntegrationTest.java', itTestDir + 'IntegrationTest.java', this, {});
+    this.template(itTestDirTemplate + 'IntegrationTest.java', itTestDir + 'IntegrationTest.java', this, { 'interpolate': /<%=([\s\S]+?)%>/g });
 
     // Project
     this.template(itDirTemplate + 'pom.xml', itDir + 'pom.xml', this, { 'interpolate': /<%=([\s\S]+?)%>/g });

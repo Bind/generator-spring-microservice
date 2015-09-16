@@ -1,4 +1,4 @@
-package <%= packageName %>.security;
+package <%= packageName %>.config;
 
 import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.core.Authentication;
