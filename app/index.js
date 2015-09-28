@@ -249,6 +249,10 @@ SpringGenerator.prototype.app = function app() {
     // Project
     this.template(itDirTemplate + 'pom.xml', itDir + 'pom.xml', this, { 'interpolate': /<%=([\s\S]+?)%>/g });
 
+    // Resource
+    this.template(itResourceDirTemplate + 'mock1.json', itResourceDir + 'mock1.json', this, { 'interpolate': /<%=([\s\S]+?)%>/g });
+
+
     // ----------------------------
     // Micro service starter MAIN
     // ----------------------------
