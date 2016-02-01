@@ -68,11 +68,6 @@
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.wordnik</groupId>
-            <artifactId>swagger-annotations</artifactId>
-            <version>1.5.3-M1</version>
         </dependency><% if (devDatabaseType == 'mysql' || prodDatabaseType == 'mysql') { %>
         <dependency>
             <groupId>mysql</groupId>
@@ -103,7 +98,7 @@
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
-            <version>2.0.0</version>
+            <version>2.1.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -113,7 +108,7 @@
         <dependency>
             <groupId>com.squareup.okhttp</groupId>
             <artifactId>mockwebserver</artifactId>
-            <version>2.5.0</version>
+            <version>2.7.2</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -132,28 +127,25 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin><% if (useSonar) { %>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
+                <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
-                <version>2.5</version>
+                <version>3.0.1</version>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <configuration>
-                    <!-- The destination file for the code coverage report has to be set
-                        to the same value in the parent pom and in each module pom. Then JaCoCo will
-                        add up information in the same report, so that, it will give the cross-module
-                        code coverage. -->
                     <destFile>${project.basedir}/../target/jacoco.exec</destFile>
                 </configuration>
             </plugin><% } %>
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
-                <version>0.2.3</version>
+                <version>0.4.0</version>
                 <configuration>
                     <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
-                    <dockerDirectory>src/main/docker</dockerDirectory>
+                    <baseImage>java</baseImage>
+                    <entryPoint>["java", "-Dspring.profiles.active=docker", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>
@@ -162,6 +154,22 @@
                         </resource>
                     </resources>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>build-image</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>deploy-image</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>push</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

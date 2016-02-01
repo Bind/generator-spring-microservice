@@ -8,12 +8,12 @@
     <parent>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-parent</artifactId>
-        <version>Angel.SR3</version>
+        <version>Angel.SR6</version>
     </parent>
 
     <properties>
         <java.version>1.8</java.version>
-        <spring-cloud.version>Angel.SR3</spring-cloud.version><% if (useSonar) { %>
+        <spring-cloud.version>Angel.SR6</spring-cloud.version><% if (useSonar) { %>
         <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
         <sonar.jacoco.itReportPath>${project.basedir}/../target/jacoco-it.exec</sonar.jacoco.itReportPath>
         <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
@@ -75,7 +75,7 @@
                 <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>0.7.2.201409121644</version>
+                    <version>0.7.5.201505241946</version>
                 </plugin>
             </plugins>
         </pluginManagement>

@@ -187,7 +187,7 @@ SpringGenerator.prototype.app = function app() {
     var testDirTemplate = restDirTemplate + 'src/test/java/package/';
 
     // Docker
-    this.template(dockerDirTemplate + 'Dockerfile', dockerDir  + 'Dockerfile', this, {});
+    //this.template(dockerDirTemplate + 'Dockerfile', dockerDir  + 'Dockerfile', this, {});
 
     // Resource
     this.template(resourceDirTemplate + 'application.yml', resourceDir  + 'application.yml', this, { 'interpolate': /<%=([\s\S]+?)%>/g });
