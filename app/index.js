@@ -42,43 +42,49 @@ SpringGenerator.prototype.askFor = function askFor() {
         {
             type: 'string',
             name: 'packageName',
-            message: '(1/10) What is your default package name?',
+            message: '(1/11) What is your default package name?',
             default: 'com.example.myservice'
         },
         {
             type: 'string',
             name: 'baseName',
-            message: '(2/10) What is the base name of service?',
+            message: '(2/11) What is the base name of service?',
             default: 'myservice'
         },
         {
             type: 'string',
             name: 'serviceDescription',
-            message: '(3/10) Give a short description of service.',
+            message: '(3/11) Give a short description of service.',
             default: 'My Microservice'
         },
         {
             type: 'string',
+            name: 'dockerRegistry',
+            message: '(4/11) What is your Docker registry?',
+            default: ''
+        },
+        {
+            type: 'string',
             name: 'dockerPrefix',
-            message: '(4/10) What is your Docker prefix?',
+            message: '(5/11) What is your Docker prefix?',
             default: 'example'
         },
         {
             type: 'confirm',
             name: 'useSonar',
-            message: '(5/10) Do you want to use SonarQube?',
+            message: '(6/11) Do you want to use SonarQube?',
             default: false
         }       ,
         {
             type: 'confirm',
             name: 'useScmAndDm',
-            message: '(6/10) Do you want to use SCM and Distribution Management?',
+            message: '(7/11) Do you want to use SCM and Distribution Management?',
             default: false
         },
         {
             type: 'list',
             name: 'databaseType',
-            message: '(7/10) Which *type* of database would you like to use?',
+            message: '(8/11) Which *type* of database would you like to use?',
             choices: [
                 {
                     value: 'none',
@@ -101,7 +107,7 @@ SpringGenerator.prototype.askFor = function askFor() {
             },
             type: 'list',
             name: 'prodDatabaseType',
-            message: '(8/10) Which *production* database would you like to use?',
+            message: '(9/11) Which *production* database would you like to use?',
             choices: [
                 {
                     value: 'mysql',
@@ -120,7 +126,7 @@ SpringGenerator.prototype.askFor = function askFor() {
             },
             type: 'list',
             name: 'devDatabaseType',
-            message: '(9/10) Which *development* database would you like to use?',
+            message: '(10/11) Which *development* database would you like to use?',
             choices: [
                 {
                     value: 'h2Memory',
@@ -159,6 +165,7 @@ SpringGenerator.prototype.askFor = function askFor() {
         this.baseName = props.baseName;
         this.starters = props.starters;
         this.dockerPrefix = props.dockerPrefix;
+        this.dockerRegistry = props.dockerRegistry;
         this.useSonar = props.useSonar;
         this.useScmAndDm = props.useScmAndDm;
         this.serviceDescription = props.serviceDescription;
