@@ -22,25 +22,29 @@
     </properties>
 
     <dependencies>
+        <!-- Local -->
+        <dependency>
+            <groupId><%= packageName %></groupId>
+            <artifactId><%= baseName %>-model</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- Spring -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-hateoas</artifactId>
-        </dependency><% if (databaseType == 'mongodb') { %>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-mongodb</artifactId>
-        </dependency><% } %> <% if (databaseType == 'sql') { %>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency><% } %>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-security</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -49,10 +53,6 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-eureka</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -66,28 +66,11 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-config-client</artifactId>
         </dependency>
+
+        <!-- Other -->
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
-        </dependency><% if (devDatabaseType == 'mysql' || prodDatabaseType == 'mysql') { %>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency><% } %> <% if (devDatabaseType == 'postgresql' || prodDatabaseType == 'postgresql') { %>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>${postgresql.version}</version>
-        </dependency><% } %> <% if (devDatabaseType == 'h2Memory' || prodDatabaseType == 'h2Memory') { %>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId><% if (devDatabaseType != 'h2Memory') { %>
-            <scope>test</scope><% } %>
-        </dependency> <% } %>
-        <dependency>
-            <groupId><%= packageName %></groupId>
-            <artifactId><%= baseName %>-model</artifactId>
-            <version>${project.version}</version>
         </dependency>
 
         <!-- Testing -->

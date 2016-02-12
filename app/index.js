@@ -42,121 +42,44 @@ SpringGenerator.prototype.askFor = function askFor() {
         {
             type: 'string',
             name: 'packageName',
-            message: '(1/11) What is your default package name?',
+            message: '(1/7) What is your default package name?',
             default: 'com.example.myservice'
         },
         {
             type: 'string',
             name: 'baseName',
-            message: '(2/11) What is the base name of service?',
+            message: '(2/7) What is the base name of service?',
             default: 'myservice'
         },
         {
             type: 'string',
             name: 'serviceDescription',
-            message: '(3/11) Give a short description of service.',
-            default: 'My Microservice'
+            message: '(3/7) Give a short description of service.',
+            default: 'This Microservice does awesome things'
         },
         {
             type: 'string',
             name: 'dockerRegistry',
-            message: '(4/11) What is your Docker registry?',
+            message: '(4/7) What is your Docker registry?',
             default: ''
         },
         {
             type: 'string',
             name: 'dockerPrefix',
-            message: '(5/11) What is your Docker prefix?',
+            message: '(5/7) What is your Docker prefix?',
             default: 'example'
         },
         {
             type: 'confirm',
             name: 'useSonar',
-            message: '(6/11) Do you want to use SonarQube?',
+            message: '(6/7) Do you want to use SonarQube?',
             default: false
         }       ,
         {
             type: 'confirm',
             name: 'useScmAndDm',
-            message: '(7/11) Do you want to use SCM and Distribution Management?',
+            message: '(7/7) Do you want to use SCM and Distribution Management?',
             default: false
-        },
-        {
-            type: 'list',
-            name: 'databaseType',
-            message: '(8/11) Which *type* of database would you like to use?',
-            choices: [
-                {
-                    value: 'none',
-                    name: 'None'
-                },
-                {
-                    value: 'sql',
-                    name: 'SQL (H2, MySQL, PostgreSQL)'
-                },
-                {
-                    value: 'mongodb',
-                    name: 'MongoDB'
-                }
-            ],
-            default: 'none'
-        },
-        {
-            when: function (response) {
-                return response.databaseType == 'sql';
-            },
-            type: 'list',
-            name: 'prodDatabaseType',
-            message: '(9/11) Which *production* database would you like to use?',
-            choices: [
-                {
-                    value: 'mysql',
-                    name: 'MySQL'
-                },
-                {
-                    value: 'postgresql',
-                    name: 'PostgreSQL'
-                }
-            ],
-            default: 0
-        },
-        {
-            when: function (response) {
-                return (response.databaseType == 'sql' && response.prodDatabaseType == 'mysql');
-            },
-            type: 'list',
-            name: 'devDatabaseType',
-            message: '(10/11) Which *development* database would you like to use?',
-            choices: [
-                {
-                    value: 'h2Memory',
-                    name: 'H2 in-memory with Web console'
-                },
-                {
-                    value: 'mysql',
-                    name: 'MySQL'
-                }
-            ],
-            default: 0
-        },
-        {
-            when: function (response) {
-                return (response.databaseType == 'sql' && response.prodDatabaseType == 'postgresql');
-            },
-            type: 'list',
-            name: 'devDatabaseType',
-            message: '(10/10) Which *development* database would you like to use?',
-            choices: [
-                {
-                    value: 'h2Memory',
-                    name: 'H2 in-memory with Web console'
-                },
-                {
-                    value: 'postgresql',
-                    name: 'PostgreSQL'
-                }
-            ],
-            default: 0
         }
     ];
 
@@ -169,9 +92,6 @@ SpringGenerator.prototype.askFor = function askFor() {
         this.useSonar = props.useSonar;
         this.useScmAndDm = props.useScmAndDm;
         this.serviceDescription = props.serviceDescription;
-        this.databaseType = props.databaseType;
-        this.devDatabaseType = props.devDatabaseType;
-        this.prodDatabaseType = props.prodDatabaseType;
 
         cb();
     }.bind(this));
