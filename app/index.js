@@ -3,18 +3,17 @@ var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
-var _S = require('underscore.string');
 
 var SpringGenerator = module.exports = function SpringGenerator(args, options, config) {
-    yeoman.generators.Base.apply(this, arguments);
+    yeoman.Base.apply(this, arguments);
 };
 
-util.inherits(SpringGenerator, yeoman.generators.Base);
+util.inherits(SpringGenerator, yeoman.Base);
 
 SpringGenerator.prototype.askFor = function askFor() {
     var cb = this.async();
 
-    console.log(chalk.green('\n.............DD88888888888888888,............\n' +
+    console.log(chalk.blue('\n.............DD88888888888888888,............\n' +
         '...........:888888888888888888888,...........\n' +
         '..........+88888888888888888888888+..........\n' +
         '.........,8888888888888888888888888..........\n' +
@@ -125,6 +124,7 @@ SpringGenerator.prototype.app = function app() {
     // Test
     //this.template(testDirTemplate + 'ApplicationTests.java', testDir + 'ApplicationTests.java', this, {});
     this.template(testDirTemplate + 'rest/controller/HomeControllerTest.java', testDir + 'rest/controller/HomeControllerTest.java', this, {});
+    this.template(testDirTemplate + 'core/package-info.java', testDir + 'core/package-info.java', this, {});
 
 
     // Java
