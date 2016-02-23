@@ -1,4 +1,4 @@
-# Spring Microservice Generator [![Build Status][travis-image]][travis-url] [![NPM version][npm-image]][npm-url]
+# Spring Microservice Generator
 
 A generator for [Yeoman](http://yeoman.io).
 
