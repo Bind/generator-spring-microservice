@@ -39,7 +39,6 @@ myservice-rest
                     rest/
                         assembler/
                         controller/
-                        global/
                     Application.java
             resources/
                 application.yml
