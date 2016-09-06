@@ -4,8 +4,7 @@ spring:
   cloud:
     config:
       failFast: false
-      discovery:
-        enabled: true
+      uri: ${SPRING_CONFIG_URI:http://localhost:8888}
 
 ---
 
@@ -14,10 +13,4 @@ spring:
   cloud:
     config:
       failFast: true
-
-eureka:
-  instance:
-    preferIpAddress: true
-  client:
-    serviceUrl:
-      defaultZone: ${SPRING_EUREKA_URI:http://discovery:8761/eureka/}
+      uri: ${SPRING_CONFIG_URI:http://configserver:8888}
