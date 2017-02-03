@@ -14,3 +14,15 @@ spring:
     config:
       failFast: true
       uri: ${SPRING_CONFIG_URI:http://configserver:8888}
+
+---
+
+spring:
+  profiles: e2e
+  cloud:
+    config:
+      enabled: false
+
+eureka:
+  client:
+    enabled: false
