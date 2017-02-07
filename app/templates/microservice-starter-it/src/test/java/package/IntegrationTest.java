@@ -37,7 +37,7 @@ import java.util.Arrays;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
-@ActiveProfiles("e2e")
+@ActiveProfiles("integration-testing")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = Application.class)
 public class IntegrationTest {
 

@@ -18,7 +18,7 @@ spring:
 ---
 
 spring:
-  profiles: e2e
+  profiles: integration-testing
   cloud:
     config:
       enabled: false
