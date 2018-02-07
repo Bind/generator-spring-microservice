@@ -9,15 +9,15 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.9.RELEASE</version>
+        <version>2.0.0.M7</version>
     </parent>
 
     <properties>
-        <java.version>1.8</java.version><% if (useSonar) { %>
+        <java.version>1.8</java.version>
         <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
         <sonar.jacoco.itReportPath>${project.basedir}/../target/jacoco-it.exec</sonar.jacoco.itReportPath>
         <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
-        <sonar.language>java</sonar.language><% } %>
+        <sonar.language>java</sonar.language>
     </properties>
 
     <dependencyManagement>
@@ -25,7 +25,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Edgware.RELEASE</version>
+                <version>Finchley.M5</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -37,37 +37,59 @@
         <module><%= baseName %>-rest</module>
         <module><%= baseName %>-it</module>
     </modules>
-    <% if (useScmAndDm) { %>
-    <scm>
-        <url>https://github.com/example-org/example-rep.git</url>
-        <connection>scm:git:git://github.com/example-org/example-rep.git</connection>
-        <developerConnection>scm:git:git@github.com:example-org/example-rep.git</developerConnection>
-    </scm>
 
-    <distributionManagement>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>Snapshot Repository</name>
-            <url>http://example.com:8091/artifactory/libs-snapshots-local</url>
-        </snapshotRepository>
-        <repository>
-            <id>releases</id>
-            <name>Release Repository</name>
-            <url>http://example.com:8091/artifactory/libs-releases-local</url>
-        </repository>
-    </distributionManagement>
+    <!-- Uncomment to use scm -->
+    <!--<scm>-->
+        <!--<url>https://github.com/example-org/example-rep.git</url>-->
+        <!--<connection>scm:git:git://github.com/example-org/example-rep.git</connection>-->
+        <!--<developerConnection>scm:git:git@github.com:example-org/example-rep.git</developerConnection>-->
+    <!--</scm>-->
+
+    <!-- Uncomment to use distribution management -->
+    <!--<distributionManagement>-->
+        <!--<snapshotRepository>-->
+            <!--<id>snapshots</id>-->
+            <!--<name>Snapshot Repository</name>-->
+            <!--<url>http://example.com:8091/artifactory/libs-snapshots-local</url>-->
+        <!--</snapshotRepository>-->
+        <!--<repository>-->
+            <!--<id>releases</id>-->
+            <!--<name>Release Repository</name>-->
+            <!--<url>http://example.com:8091/artifactory/libs-releases-local</url>-->
+        <!--</repository>-->
+    <!--</distributionManagement>-->
 
     <repositories>
         <repository>
-            <releases />
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/libs-milestone</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
-            <id>releases</id>
-            <name>Release versions</name>
-            <url>http://example.com:8091/artifactory/libs-releases-local</url>
         </repository>
-    </repositories><% } %>
+        <!-- Uncomment to use custom repository -->
+        <!--<repository>-->
+            <!--<id>releases</id>-->
+            <!--<name>Release versions</name>-->
+            <!--<url>http://example.com:8091/artifactory/libs-releases-local</url>-->
+            <!--<releases />-->
+            <!--<snapshots>-->
+                <!--<enabled>false</enabled>-->
+            <!--</snapshots>-->
+        <!--</repository>-->
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 
     <build>
         <plugins>

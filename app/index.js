@@ -41,44 +41,32 @@ SpringGenerator.prototype.askFor = function askFor() {
         {
             type: 'string',
             name: 'packageName',
-            message: '(1/7) What is your default package name?',
+            message: '(1/5) What is your default package name?',
             default: 'com.example.myservice'
         },
         {
             type: 'string',
             name: 'baseName',
-            message: '(2/7) What is the base name of service?',
+            message: '(2/5) What is the base name of service?',
             default: 'myservice'
         },
         {
             type: 'string',
             name: 'serviceDescription',
-            message: '(3/7) Give a short description of service.',
+            message: '(3/5) Give a short description of service.',
             default: 'This Microservice does awesome things'
         },
         {
             type: 'string',
             name: 'dockerRegistry',
-            message: '(4/7) What is your Docker registry?',
+            message: '(4/5) What is your Docker registry?',
             default: ''
         },
         {
             type: 'string',
             name: 'dockerPrefix',
-            message: '(5/7) What is your Docker prefix?',
+            message: '(5/5) What is your Docker prefix?',
             default: 'example'
-        },
-        {
-            type: 'confirm',
-            name: 'useSonar',
-            message: '(6/7) Do you want to use SonarQube?',
-            default: false
-        }       ,
-        {
-            type: 'confirm',
-            name: 'useScmAndDm',
-            message: '(7/7) Do you want to use SCM and Distribution Management?',
-            default: false
         }
     ];
 
@@ -88,8 +76,6 @@ SpringGenerator.prototype.askFor = function askFor() {
         this.starters = props.starters;
         this.dockerPrefix = props.dockerPrefix;
         this.dockerRegistry = props.dockerRegistry;
-        this.useSonar = props.useSonar;
-        this.useScmAndDm = props.useScmAndDm;
         this.serviceDescription = props.serviceDescription;
 
         cb();
