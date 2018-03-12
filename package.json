@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/NationalLibraryOfNorway/generator-spring-microservice",
   "dependencies": {
-    "yeoman-generator": "0.x.x",
-    "chalk": "1.x.x"
+    "yeoman-generator": "2.0.3",
+    "chalk": "2.3.2"
   }
 }
