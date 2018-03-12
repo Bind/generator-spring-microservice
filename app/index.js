@@ -285,12 +285,14 @@ module.exports = class extends Generator {
             }
         );
 
-        this.fs.copyTpl(
-            this.templatePath('.npmignore'),
-            this.destinationPath('.npmignore'),
-            {
-                baseName: this.baseName
-            }
-        );
+        if (this.fs.exists(this.templatePath('ignorefiles'))) {
+            this.fs.copyTpl(
+                this.templatePath('ignorefiles'),
+                this.destinationPath('.gitignore'),
+                {
+                    baseName: this.baseName
+                }
+            );
+        }
     }
 };
