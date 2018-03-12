@@ -1,6 +1,6 @@
 {
   "name": "generator-spring-microservice",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "A Yeoman generator for Microservice with Maven + Spring + Netflix + Docker",
   "keywords": [
     "yeoman-generator",
